@@ -1,5 +1,6 @@
 {
   "name": "project-todo",
+  "author": "https://github.com/t-t-bui",
   "version": "0.1.0",
   "private": true,
   "scripts": {
