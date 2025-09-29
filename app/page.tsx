@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Image from "next/image";
 import Nav from "./nav";
@@ -10,9 +10,21 @@ export default function Home() {
   const [todos, setTodos] = useState<string[]>([]);
   const [input, setInput] = useState("");
 
-  const addTodo = () => {
+  useEffect(() => {
+    fetch("api/todos")
+    .then((res) => res.json())
+    .then(setTodos);
+  }, []);
+
+  const addTodo = async () => {
     if(!input.trim()) return;
-    setTodos([...todos, input]);
+    const res = await fetch("/api/todos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ todo: input}),
+    });
+    const data = await res.json();
+    setTodos(data.todos);
     setInput("");
   };
 
@@ -24,12 +36,14 @@ export default function Home() {
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <Nav/>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <h1 className="font-bold mb-5">Next.js Todo App</h1>
-        <div className="flex gap-2">
-          <input className="broder p-2 rounded" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Add a task..."/>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={addTodo}>
-            Add
-          </button>
+        <div className="w-full max-w-md shadow-lg rounded-lg p-6">
+          <h1 className="text-2xl font-bold text-center mb-6">Next.js Todo App</h1>
+          <div className="flex gap-2 mb-4">
+            <input className="flex-1 broder p-2 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Add a task..."/>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition" onClick={addTodo}>
+              Add
+            </button>
+          </div>
         </div>
 
         <Image
@@ -77,6 +91,19 @@ export default function Home() {
           >
             Read our docs
           </a>
+        </div>
+
+        <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6">
+          <ul className="space-y-2">
+            { todos.map((todo, i) => {
+              <li key={i} className="flex justify-between items-center border rounded-lg px-3 py-2">
+                <span className=""> { todo }</span>
+                <button className="text-red-500" onClick={() => removeTool(i)}>
+                  X
+                </button>
+              </li>
+            })}
+          </ul>
         </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
