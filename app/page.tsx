@@ -1,14 +1,37 @@
+"use client";
+import { useState } from "react";
+
 import Image from "next/image";
 import Nav from "./nav";
 
 import { Analytics } from '@vercel/analytics/next';
 
 export default function Home() {
+  const [todos, setTodos] = useState<string[]>([]);
+  const [input, setInput] = useState("");
+
+  const addTodo = () => {
+    if(!input.trim()) return;
+    setTodos([...todos, input]);
+    setInput("");
+  };
+
+  const removeTodo = (index: number) => {
+    setTodos(todos.filter((_, i) => i !== index));
+  };
+
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <Nav/>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <h2>Dashboard</h2>
+        <h1 className="font-bold mb-5">Next.js Todo App</h1>
+        <div className="flex gap-2">
+          <input className="broder p-2 rounded" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Add a task..."/>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={addTodo}>
+            Add
+          </button>
+        </div>
+
         <Image
           className="dark:invert"
           src="/next.svg"
