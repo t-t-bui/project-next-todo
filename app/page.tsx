@@ -8,31 +8,6 @@ import TodoList from "./components/TodoList";
 import { Analytics } from '@vercel/analytics/next';
 
 export default function Home() {
-//   const [todos, setTodos] = useState<string[]>([]);
-//   const [input, setInput] = useState("");
-
-  // useEffect(() => {
-  //   fetch("api/todos")
-  //   .then((res) => res.json())
-  //   .then(setTodos);
-  // }, []);
-
-  // const addTodo = async () => {
-  //   if(!input.trim()) return;
-  //   const res = await fetch("/api/todos", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ todo: input}),
-  //   });
-  //   const data = await res.json();
-  //   setTodos(data.todos);
-  //   setInput("");
-  // };
-
-  // const removeTodo = (index: number) => {
-  //   setTodos(todos.filter((_, i) => i !== index));
-  // };
-
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <Nav/>

@@ -1,5 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
+import Contact from "Contact";
+import Link from 'next/link';
+
 
 export default function Nav() {
 	const [darkMode, setDarkMode] = useState(false);
@@ -34,13 +37,13 @@ export default function Nav() {
 
 					<ul className="hidden md:flex ml-4 space-x-6 text-gray-600 dark:text-gray-300">
 						<li className="hover:text-blue-500 dark:hover:text-blue-400 cursor-pointer">
-							Home
+							<Link href="/">Home</Link>
 						</li>
 						<li className="hover:text-blue-500 dark:hover:text-blue-400 cursor-pointer">
-							About
+							<Link href="/">About</Link>
 						</li>
 						<li className="hover:text-blue-500 dark:hover:text-blue-400 cursor-pointer">
-							Contact
+							<Link href="/Contact">Contact</Link>
 						</li>
 					</ul>
 
