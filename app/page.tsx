@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Nav from "./components/nav";
 import TodoList from "./components/TodoList";
 
 import { Analytics } from '@vercel/analytics/next';
@@ -8,7 +7,6 @@ import { Analytics } from '@vercel/analytics/next';
 export default function Home() {
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <Nav/>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         {/*<div className="w-full max-w-md shadow-lg rounded-lg p-6">
           <h1 className="text-2xl font-bold text-center mb-6">Next.js Todo App</h1>

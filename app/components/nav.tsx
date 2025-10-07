@@ -27,7 +27,7 @@ export default function Nav() {
 	}
 
 	return (
-		<nav className="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50 rounded">
+		<nav className="bg-white ml-25 mr-25 dark:bg-gray-800 shadow-md sticky top-0 z-50 rounded">
 			<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 				<div className="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
 					<h1 className="text-xl font-bold text-gray-800 dark:text-gray-100">
@@ -39,10 +39,10 @@ export default function Nav() {
 							<Link href="/">Home</Link>
 						</li>
 						<li className="hover:text-blue-500 dark:hover:text-blue-400 cursor-pointer">
-							<Link href="/">About</Link>
+							<Link href="/about">About</Link>
 						</li>
 						<li className="hover:text-blue-500 dark:hover:text-blue-400 cursor-pointer">
-							<Link href="/pages/contact">Contact</Link>
+							<Link href="/contact">Contact</Link>
 						</li>
 					</ul>
 
