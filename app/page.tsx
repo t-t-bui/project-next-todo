@@ -1,8 +1,6 @@
 "use client";
-// import { useEffect, useState } from "react";
-
 import Image from "next/image";
-import Nav from "./nav";
+import Nav from "./components/nav";
 import TodoList from "./components/TodoList";
 
 import { Analytics } from '@vercel/analytics/next';

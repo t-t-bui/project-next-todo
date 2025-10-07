@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import Contact from "Contact";
 import Link from 'next/link';
 
 
@@ -43,7 +42,7 @@ export default function Nav() {
 							<Link href="/">About</Link>
 						</li>
 						<li className="hover:text-blue-500 dark:hover:text-blue-400 cursor-pointer">
-							<Link href="/Contact">Contact</Link>
+							<Link href="/pages/contact">Contact</Link>
 						</li>
 					</ul>
 
